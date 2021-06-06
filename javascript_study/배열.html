@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const target = ['a','b','c','d','e']
+        target.push('f')  // 맨 뒤에 요소 추가
+        target[0]='가'   //수정
+        target.pop();   //마지막 요소 제거
+        target.shift(); //첫번째 제거
+        target.unshift('첫번째')  //첫번째  추가
+        //target.splice(1,2)// (지우고 싶은 인덱스, 몇개를 지울지)
+        //target.splice(1)  //인덱스이후에 싹다 지우기
+        target.splice(1,3,'나','다')//1번 인덱스에서 3개지우고 나, 다 추가
+        target.splice(1,0,'가') //1번째 인덱스 앞에다 추가
+        target.push('가')
+        const result = target.includes('가')  //true , false
+        let result1 = target.lastIndexOf('가') //마지막에 나오는 가의 인덱스값
+        let result2 = target.indexOf('가')
+
+        console.log(result)
+        console.log(result1)
+        console.log(result2)
+        console.log(target)
+
+
+        const arr = ['1','2','5','4','5','6','5']
+        //5제거 해보기
+        while(arr.indexOf('5')>-1){
+            arr.splice(arr.indexOf('5'),1)
+        console.log(arr)
+        }
+    </script>
+</body>
+</html>

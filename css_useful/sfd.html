@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+      .container{margin: auto; border: 1px solid black;}
+      h3{text-align: center;}
+     .phone{border: 1px solid black; padding: 5px;}
+  </style>
+
+</head>
+<body>
+
+<div class="container">
+    <div id="c">
+  <div><h3>회원가입정보</h3></div>
+  <form action="/action_page.php">
+    
+    <div class="form-group">
+     <div class="id">아이디: 
+      <input type="text" class="form-control" id="userId" placeholder="아이디 입력(중복되는 아이디는 회원가입 누르면 알수있음)" name="userId" required>
+   </div>
+    </div>
+    <button type="button" id="confirm" class="btn btn-primary">중복확인</button>
+    <div class="form-group">
+        <div class="id">비밀번호: 
+         <input type="password" class="form-control" id="password1" placeholder="비밀번호 입력" name="password1">
+      </div>
+       </div>
+       <div class="form-group">
+        <div class="id">비밀번호 확인: 
+         <input type="password" class="form-control" id="password2" placeholder="비밀번호 확인" name="password2">
+      </div>
+       </div>
+<div id="result"></div>
+       <div class="form-group">
+        <div class="id">이름: 
+         <input type="text" class="form-control" id="name" placeholder="이름입력" name="username">
+      </div>
+       </div>
+
+       <div class="form-group">
+        <div class="phone">전화번호: 
+            <select id="tel">
+<option value="tel1">02</option>
+<option value="tel2">010</option>
+            </select>
+         - <input type="text" maxlength="4"> - <input type="text" maxlength="4">
+      </div>
+       </div>
+
+       <div class="form-group">
+        <div class="id">이메일: 
+         <input type="email" class="form-control" id="email" placeholder="이메일입력" name="email">
+      </div>
+       </div>
+
+       <div class="form-group">
+        <div class="id">우편번호: 
+         <input type="text" class="form-control" id="postcode" placeholder="우편번호 입력" name="postcode">
+      </div>
+       </div>
+
+       <button type="button" id="search" class="btn btn-primary">찾기</button>
+
+       <div class="form-group">
+        <div class="id">주소1: 
+         <input type="text" class="form-control" id="address1" placeholder="주소입력" name="address1">
+      </div>
+       </div>
+       <div class="form-group">
+        <div class="id">상세주소: 
+         <input type="text" class="form-control" id="address2" placeholder="상세주소 입력" name="address2">
+      </div>
+       </div>
+    <button type="submit" id="join" class="btn btn-primary">회원가입</button>
+    <button type="reset" class="btn btn-primary">다시하기</button>
+  </form>
+</div>
+</div>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+
+let tempId ="ksy"
+let userId = document.getElementById("userId");
+let confirm = document.getElementById("confirm")
+let p1 = document.getElementById("password1");
+let p2 =document.getElementById("password2");
+let result = document.getElementById("result")
+let join = document.getElementById("join")
+
+let alertCheck = false;
+
+/* 아이디 중복체크 안하면 하라고 알려줌 */
+join.onclick = function(){
+    if(alertCheck == false){
+    alert("아이디 중복체크 하셈, 중복되는 아이디는:ksy")
+}
+}
+
+/* 아이디 중복체크 */
+confirm.onclick = function(){
+    if(userId.value!==tempId){
+        alert("아이디 사용가능")
+        confirm.innerHTML = "중복확인이 완료됨"
+        confirm.setAttribute("style","background-color:red")
+        alertCheck=true;
+    } else{
+        alert("아이디 중복")
+        alertCheck=false;
+    }
+}
+
+/* 비밀번호 체크 */
+p2.onkeyup = function(){
+    if(p1.value!=p2.value){
+        result.innerHTML="비밀번호가 다릅니다."
+        result.setAttribute("style","color:red")
+    } else{
+        result.innerHTML="비밀번호 같습니다."
+        result.setAttribute("style","color:blue")
+    }
+}
+
+
+ document.getElementById("search").onclick = function(){
+//생성자 방식
+        new daum.Postcode({
+            oncomplete: function(data) {
+                let roadAddr = data.roadAddress; 
+                document.getElementById("postcode").value = data.zonecode;
+                document.getElementById("address1").value = roadAddr;   
+            }
+        }).open();
+    }
+</script>
+</body>
+</html>

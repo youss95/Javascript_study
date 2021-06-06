@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        fieldset{
+            width: 60%;
+            margin: auto;
+            position: relative;
+        }
+        p{
+            margin: 0%;
+            margin-left: 43%;
+        }
+        #title{
+            width: 60%;
+           
+        }
+        #writer{
+            width: 35%;
+            float: left;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+        #content{
+            box-sizing: border-box;
+            overflow-y: auto;
+            width: 60%;
+            height: 100px;
+            float: left;
+            border: 1px solid black;
+        }
+        /* div {
+            border: 1px solid black;
+        } */
+        .container{
+            width: 60%;
+            margin: auto;
+        }
+        #newtit{
+            width: 100%;
+            border-top: 1px solid rgb(240, 209, 123);
+        }
+        #newcon{
+            width: 100%;
+            border-top: 1px solid rgb(240, 209, 123);
+            border-bottom: 1px solid rgb(240, 209, 123);
+        }
+        #newwir{
+            width: 50%;
+        }
+        #newdel{
+            width: 30%;
+            float: right;
+        }
+        .row{
+            border-top: 2px solid rgba(220, 20, 60, 0.425);
+            border-bottom: 2px solid rgba(220, 20, 60, 0.425);
+        }
+        .delX{
+            width: 100%;
+        }
+        #add{
+            float: left;
+            position: absolute;
+            top: 38px;
+            right: 15px;
+        }
+        #delTitle{
+            width: 35%;
+            float: left;
+            position: absolute;
+            top: 75px;
+            right: 15px;
+        }
+        #del{
+            float: left;
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+        }
+        .row {
+            overflow: hidden;
+        }
+        .row div {
+            float: left;
+        }
+        /* 이거 div  placeholder 관련코드 */
+        [contenteditable=true]:empty:before{
+         content: attr(placeholder);
+         opacity:70%
+        }
+    </style>
+
+    <script>
+        $(function () {
+            $("#add").on("click", function () {
+                let title = $("#title").val();
+                let content = $("<div id=newcon>" + $("#content").html() + "</div>");
+                let writer = $("#writer").val();
+
+                // 타이틀을 담는  div
+                let titleDiv = $("<div id=newtit>");
+                titleDiv.html(title);
+                titleDiv.addClass("title"); // 검색삭제땜시 사용
+
+                let contentDiv = $("<div id=newcon>");
+                contentDiv.html(content);
+
+                let witerDiv = $("<div  id=newwir>");
+                witerDiv.html(writer);
+
+                let delDiv = $("<div  id=newdel>");
+                let delBtn = $("<button>")
+                delBtn.addClass("delX");
+                delBtn.text("해당 게시글 삭제하기 ");
+                // 여까지 삭제버튼 만든거고
+
+                // 식제버튼 만든것을 삭제 디아이브이 안에 넣으려햐준것 
+                delDiv.append(delBtn);
+
+                let rowDiv = $("<div>");
+                rowDiv.addClass("row");
+
+                rowDiv.append(titleDiv);
+                rowDiv.append(contentDiv);
+                rowDiv.append(witerDiv);
+                rowDiv.append(delDiv);
+
+                $(rowDiv).hide();
+
+                // 화면에뿅 로우디아이브이
+                $(".header").after(rowDiv);
+
+                $(rowDiv).fadeIn(1000);
+
+                $("#title").val("");
+                $("#content").html("");
+                $("#writer").val("");
+
+            })
+            $("#del").on("click", function () {
+                let delTitle = $("#delTitle").val();
+                let titles = $(".title");
+
+                titles.each(function (index, item) {
+                    if ($(item).text() == delTitle) {
+                        $(item).parent().remove();
+                    }
+                });    $(item).parent().remove();
+            })
+
+            $(".container").on("click",".delX",function(){
+                $(this).closest(".row").fadeOut(1000,function(){
+                    $(this).remove();
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>JQuery 활용 게시판 만들기 과제</legend>
+        <input type="text" id="title" placeholder="제목">
+        <input type="text" id="writer" placeholder="작성자">
+        <div contenteditable="true" type="text" id="content"  placeholder="내용을 입력해주세요."></div>
+        <button id="add">추가하기</button>
+        <input type="text" id="delTitle" placeholder="삭제할 제목">
+        <button id="del">삭제하기</button>
+    </fieldset>
+    <div class="container">
+        <div class="header">
+           <p>💌게시판💌</p>
+        </div>
+    </div>
+</body>
+
+</html>

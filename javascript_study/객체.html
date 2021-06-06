@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const me ={
+            name:'yong',
+            age:12,
+            gender:'M',
+            'c-a':'hello'  //숫자나 특수문자 있으면 ''붙여주어야함
+        }
+        me['c-a'] = 'c+a'
+        console.log(me['c-a'])
+        //객체 안에 있는 함수는 메서드라고 함
+       
+        const debug = {
+            log:function(a){  //debug 객체안에 log 메서드
+                console.log(a)
+            }
+        };
+       let a= debug.log('haha')
+       console.log(a)
+
+        //객체간의 비교
+        //{} : {} = false  변수에 넣어 놓고 비교해야됨
+        const array = [1,2,3]  
+        console.log(array ===[1,2,3])  //false . 배열을 새로만든것 이기 때문
+        //메모리 상에 새롭게 만들어 지는것
+
+
+        //객체일떄
+        const n = {name:'kim'}
+        const b = n;
+        n.name = 'park';
+        console.log(b.name) //park
+        //객체가 아닌때
+        let n2 = 'kim'
+        let b2 = n2;
+        n2 = 'park';
+        console.log(b2) //kim
+    </script>
+</body>
+</html>

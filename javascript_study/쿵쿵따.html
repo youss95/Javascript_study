@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #kkd{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div><span id="order">1</span>번째 참가자</div>
+    <div id="kkd"><span id="word"></span> 쿵쿵따 ~~</div>
+    <div id="alarm">3글자만 입력</div>
+    <input type="text">
+    <button>입력</button>
+
+    <script>
+        const $order = document.querySelector('#order');
+        const $input = document.querySelector('input')
+        const $button = document.querySelector('button')
+        const $word = document.querySelector('#word')
+        const kkd = document.querySelector('#kkd')
+        const alarm = document.querySelector('#alarm')
+        const number = parseInt(prompt("참가자가 몇명?"))
+        confirm(`${number}명이 맞습니까?`)
+       
+        let newWord;
+        let word;
+        const buttonClick = function(){
+            const order = parseInt($order.textContent);
+            if(!word&&$input.value.length==3){
+                kkd.style.display='block';
+                alarm.style.display='none';
+               
+                word=newWord;
+                if(order+1>number){
+                    $order.textContent=1;
+                }else{
+                    $order.textContent=order+1;
+                }
+                $input.value = "";
+                $input.focus();
+                $word.textContent = newWord
+            }else{
+                if($input.value.length !==3){
+                  alarm.style.display='block'
+                }else{
+                if(word[word.length-1]===newWord[0]){
+                    if(order+1>number){
+                    $order.textContent=1;
+                }else{
+                    $order.textContent=order+1;
+                }
+                $input.value = "";
+                $input.focus();
+                $word.textContent = newWord
+                }else{
+                    alert('실패 ㅠ')
+                }
+                }
+            }
+            }
+        
+
+      
+      
+
+        const WriteWord = function(event){
+            newWord = event.target.value;
+           
+        }
+        $button.addEventListener('click',buttonClick)
+        $input.addEventListener('input',WriteWord)
+
+        
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

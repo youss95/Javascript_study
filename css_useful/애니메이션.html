@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .photo{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* animation-name: change_color;
+            animation-duration: 2s;
+             animation-delay: 1s;
+             animation-iteration-count: 3;  /* 3번 반복 */
+                /*
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;*/  /* 애니메이션 진행 방향에서 멈춰 */
+           /* animation-direction: reverse; */
+         
+        }
+        .wrapper{
+            width: 100%;
+            height: 300px;
+        }
+        .wrapper:hover .photo{ /* 래퍼에 올렸을때 포토클래스는 */
+            animation: change_color 2s ease 1s 3 normal forwards;
+        }
+        /* 체인지 컬러가 하는일 따로 적어 줘야 함 */
+        /* 특별한 설정없으면 다시 프로 상태로 돌아온다. */
+        @keyframes change_color {  
+            0%{background-color: red;}
+            25%{background-color: yellow; margin: 0 0 0 200px;}
+            50%{background-color: green; margin: 200px 0 0 200px;}
+            75%{background-color: purple; margin: 200px 0 0 0;}
+            100%{background-color: blue; margin: 0;}
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+<div class="photo">
+	
+</div>
+</div>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>drawer_side_menu</title>
+
+
+
+<script src="./js/vendor/jquery-1.10.2.min.js"></script>
+<script src="./js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="./js/main.js"></script>
+
+<style>
+    /*
+ * Base
+ */
+ *{box-sizing: border-box;}
+html {
+    font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+body {
+    background-color: #656565;
+    margin: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+button {
+    outline: none;
+    cursor: pointer;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+.page-header {
+    background-color: #fff;
+}
+
+.page-header h1 {
+    width: 976px;
+    height: 80px;
+    margin: 0 auto;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 80px;
+    letter-spacing: 0.1em;
+}
+
+.page-main {
+    position: relative;
+}
+
+.page-main > aside {
+    background-color: rgba(0,0,0,0.8);
+    width: 350px;
+    height: 100%;
+    top: 0;
+    left: -350px;
+    position: fixed;
+}
+/* css로 하는게 속도 측면에서우수 */
+/* .page-main > aside.open{
+    left: -70px;
+} */
+
+.page-main > aside ul {
+    margin: 0;
+    padding: 0;
+    top: 50px;
+    left: 114px;
+    position: absolute;
+}
+
+.page-main > aside li {
+    margin: 0 0 20px;
+    list-style: none;
+}
+
+.page-main > aside button {
+    background-color: rgba(0,0,0,0.8);
+    display: block;
+    position: absolute;
+    top: 150px;
+    left: 350px;
+    width: 52px;
+    height: 132px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.page-footer {
+    background-color: #656565;
+}
+
+.page-footer small {
+    display: block;
+    color: #fff;
+    font-size: 11px;
+    text-align: right;
+    width: 976px;
+    margin: 0 auto;
+    height: 120px;
+    line-height: 120px;
+    letter-spacing: 0.15em;
+}
+
+.page-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/*
+ * Helpers
+ */
+
+/* Clearfix */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<header class="page-header" role="banner">
+    <h1>drawer_side_menu</h1>
+</header>
+
+<div class="page-main" role="main">
+    <aside>
+        <ul>
+            <li><a href="#"><img src="img/01_aside.png"></a></li>
+            <li><a href="#"><img src="img/02_aside.png"></a></li>
+            <li><a href="#"><img src="img/03_aside.png"></a></li>
+        </ul>
+        <button><img src="img/btn_open.png"></button>
+    </aside>
+</div>
+<script>
+    //속성 변경
+    //let c = A.attr('b') = A라는 요소의 b라는 속성의 값이 뭔지  
+    //console.log(button.find('img').attr('src'))
+    //A.attr('b','c') b속성을 c로
+    $(function(){
+    let aside = $("aside"),
+        button = aside.find('button'),
+        duration = 300;
+//stop: 하던일 멈추기
+  //버튼을 클릭하면  aside가 나오게
+  //클래스명 추가는 addclass, removeclass, toggleclass
+  //A.hasclass() -> 조건문에서만 쓴다.
+        button.click(function(){
+         aside.toggleClass('open');   //클릭할때 마다 클래스 생성 삭제 됨
+         if(aside.hasClass('open')){
+             aside.animate({left:'-70px'},duration,'easeOutBack');
+             button.find('img').attr('src','img/btn_close.png');
+         }else{
+             aside.stop().animate({left:'-350px'},duration,'easeInBack');
+             button.find('img').attr('src','img/btn_open.png');
+         }
+           
+        })
+      
+})
+
+</script>
+</body>
+</html>

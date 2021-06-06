@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin:0; padding:0;}
+.portfolio {
+  width:960px; margin:100px auto; background:black; border:1px solid #ccc;
+}
+.portfolio::after{
+    content: '';
+    clear: both;
+    display: block;
+}
+.portfolio li{
+  list-style:none; background:green; width:225px; height:225px; 
+  float: left; margin-right: 20px;
+}
+.portfolio li:last-child{
+    margin-right: 0;
+}
+    </style>
+</head>
+<body>
+    <ul class="portfolio">
+        <li><a href="">pic1</a></li>
+        <li><a href="">pic2</a></li>
+        <li><a href="">pic3</a></li>
+        <li><a href="">pic4</a></li>
+      </ul>
+</body>
+</html>

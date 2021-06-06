@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+        *{box-sizing: border-box;}
+        #replybox{
+            border: 1px solid black;
+            width: 800px;
+            margin: auto;
+            height: 130px;
+        }
+        #replyuser{
+            border: 1px solid black;
+            height: 30px;
+            background-color: rgb(116, 116, 116);
+        }
+        #replyuser>input{
+            border: 1px solid black;
+            margin-top: 7px;
+        }
+        #replycon{
+            border: 1px solid black;
+            height: 100px;
+            width: 100%;
+            float: left;
+        }
+        #con{
+            border: 1px solid black;
+            height: 100px;
+            width: 80%;
+            float: left;
+            overflow-y: auto;
+        }
+        #btn{
+            border: 1px solid black;
+            height: 100px;
+            width: 20%;
+            float: left;
+        }
+        #btn>button{
+            border: 1px solid black;
+            height: 100%;
+            width: 100%;
+            float: left;
+        }
+        #box{
+            border: 1px solid black;
+            height: 160px;
+            padding: 1%;
+        }
+        #reply{
+            width: 800px;
+            margin: auto;
+            height: 166px;
+        }
+        #replycon2{
+            width: 80%;
+            float: left;
+        }
+        #replyhead{
+            margin: auto;
+            width: 615px;
+            height: 20px;
+
+            background-color: rgb(184, 184, 184);
+        }
+        #con2{
+            border: 1px solid black;
+            margin: auto;
+            width: 615px;
+            height: 122px;
+            overflow: auto;
+        }
+        #delbtn{
+            float: left;
+            height: 100%;
+            width: 159.6px;
+        }
+        .delete{
+            margin-top: 50px;
+            margin-left: 43px;
+            height: 50px;
+            width: 70px;
+        }
+        #userid{
+            border: 1px solid black;
+            background-color: white;
+            width: 150px;
+            margin-left: 10px;
+            margin-top: 6px;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#btn").on("click",function(){
+                let a = $("<div id=box><div id=replycon2><div id=replyhead>"+$("#userid").html()+
+                    " 님의 글</div><div id=con2>"+$("#con").html()+"</div></div><button class=delete>삭제</button></div>");
+                $("#reply").append(a);
+                $("#con").html("");
+                $("#userid").html("");
+            })
+            $(document).on("click",".delete",function(e){
+                $(this).parent().remove();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="replybox">
+        <div id="replyuser">
+            <div id="userid" contenteditable="true"></div>
+        </div>
+        <div id="replycon">
+            <div id="con" contenteditable="true"></div>
+            <div id="btn">
+                <button>Reply</button>
+            </div>
+        </div>
+    </div><br><hr>
+    <div id="reply"></div>
+</body>
+</html>

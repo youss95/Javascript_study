@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+        .con{
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        .popup-1{
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+            border: 1px solid black;
+            box-shadow: 10px 10px 5px black;
+            display: none;
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-1"></div>
+    <div class="popup2"></div>
+    <button class="btn-close">클로즈</button>
+    <div class="con">
+        <button class="btn-pop-1">팝업 1</button>
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis laudantium earum quaerat labore! Magni, debitis! Ullam similique libero et nostrum sapiente. Dolorum eveniet porro accusamus ipsa. Distinctio minima quasi architecto?
+        Fuga praesentium optio amet beatae necessitatibus voluptatibus error suscipit, libero mollitia cumque in dolorem. Neque sunt asperiores rem eaque necessitatibus numquam tempora tenetur, officiis qui id quibusdam odit ipsam! Excepturi?
+        Cupiditate nam incidunt laborum, quisquam aut recusandae inventore distinctio a repudiandae labore neque id sunt laboriosam. Debitis nemo facere consequatur dicta quia? Unde illo ab fugit corrupti ipsam temporibus sequi.
+        Deserunt porro, natus quisquam assumenda quidem sit! Dicta, pariatur a, et tempora asperiores nam rerum voluptatibus maiores similique aliquid, aspernatur cupiditate nulla dolores. Corrupti molestias vero, consequuntur error dicta sapiente.
+    </div>
+    <script>
+        function Popup1(){
+            console.log('실행됨')
+            $('.popup-1').css({'display':'block'})
+       
+        }
+        $('.btn-pop-1').css('color','green')
+        $('.btn-pop-1').click(Popup1)
+        $('.btn-close').on('click',function(){
+            $('.popup-1').css('display','none')
+        })
+    </script>
+</body>
+</html>

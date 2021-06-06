@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
+    <style>
+        /*
+#F05522
+*/
+
+/* .rating i:nth-child(1){
+    color:#F05522 ;
+} */
+    </style>
+</head>
+<body>
+    <h2>별점 표시하기</h2>
+    <div class="review">
+        <div class="rating" data-rate="4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>	
+        </div>
+	<div class="rating" data-rate="5">
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>	
+	</div>
+	<div class="rating" data-rate="2">
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>	
+	</div>		
+</div>
+
+<hr> 
+<h2>별점주기</h2>
+<div class="make_star">
+	<select name="" id="makeStar">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select>
+	<div class="rating" data-rate="3">
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>
+		<i class="fas fa-star"></i>	
+	</div>
+</div>
+<script>
+    $(function(){
+
+
+    let rating = $('.review .rating');
+    rating.each(function(){
+        let targetScore = $(this).attr('data-rate');
+        $(this).find('i:nth-child(-n'+targetScore+')').css({color:'yellow'})
+    });
+
+    let userScore = $('#makeStar');
+    userScore.change(function(){
+        //change()는 해당하는 요소의 value에 변화가 생길 경우 이를 감지해 등록된 콜백함수를 동작
+        // select 태그에 많이 씀
+        //select 값이 바뀌면 바뀐값이 나타나게됨
+        let userScoreNum = $(this).val();    //바뀐값
+        console.log(userScoreNum);
+        $('.make_star i').css({color:'#000'});
+        $(".make_star").find('.rating').find('i:nth-child(-n'+userScoreNum+')').css({color:'yellow'})
+    });
+    $('.make_star i').click(function(){
+        let targetNum = $(this).index()+1;  //0,1,2 로 시작하니까
+        $('.make_star i').css({color:'#000'});
+        $(".make_star").find('.rating').find('i:nth-child(-n'+targetNum+')').css({color:'yellow'})
+    })
+});
+</script>
+</body>
+</html>

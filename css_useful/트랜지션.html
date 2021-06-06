@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>css3, transition</title>
+<style type="text/css">
+body{
+	font-family: tahoma,sans-serif;
+	font-size: 12px;
+}
+.photo img{
+	width: 100px; 
+    opacity: 0;    
+    /* transition-property: width margin-left; */
+    /* transition-duration: 1s;
+
+    transition-timing-function: ease; */
+    transition: width 2s 0s ease,
+                margin-left 2s 1s ease,
+                opacity 2s 1s ease
+   
+}
+.photo:hover img{
+	width: 400px;
+margin-left: 100px;
+opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<div class="photo">
+	<img src="http://placehold.it/200x200" alt="tree">
+</div>
+
+</body>
+</html>

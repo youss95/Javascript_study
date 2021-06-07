@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+	display:flex;
+    /* 앞쪽부터 채워 */
+	/* justify-content:flex-start; */
+    /* 중간 */
+	/* justify-content:center; */
+    /* 처음부터 간격 자동으로 띄어서  */
+     /* justify-content:space-between; */
+     /* 마진을 똑같이 */
+   /*   justify-content:space-around; */
+   /* 사이의 공간을 똑같이 */
+     justify-content:space-evenly;
+     
+	width:90%;
+	height:100px;
+	margin:50px auto;
+	border:2px solid #666;
+}
+
+.wrap div{
+	width:20%;
+	text-align: center;
+	line-height: 100px;
+	text-transform: uppercase;
+	background: #ccc;
+	border:1px solid #fff
+}
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>
